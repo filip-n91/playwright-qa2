@@ -1,8 +1,9 @@
 const { test, expect } = require("@playwright/test");
 
-test.describe("selectors", () => {
-  const heading = "AQA eShop";
+const heading = "AQA eShop";
+const loginHeading = "Welcome Back! 👋🏻";
 
+test.describe("CSS selectors", () => {
   test("get by - full expression", async ({ page }) => {
     await page.goto("/");
 
@@ -48,5 +49,32 @@ test.describe("selectors", () => {
         "div[class='col-12 md:t-4 sm:t-2 md:col-6 p-6'] > section > span"
       )
     ).toHaveText(heading);
+  });
+});
+
+test.describe("built-in selectors", () => {
+  test("get by - text", async ({ page }) => {
+    await page.goto("/");
+
+    await expect(page.getByText(heading)).toBeVisible();
+  });
+
+  test("get by - role", async ({ page }) => {
+    await page.goto("/");
+
+    await page.getByRole("link", { name: "Log in" }).click();
+    await expect(page.locator("h1")).toHaveText(loginHeading);
+  });
+
+  test("get by - placeholder", async ({ page }) => {
+    await page.goto("/login");
+
+    await expect(page.getByPlaceholder("Email address")).toBeVisible();
+  });
+
+  test("get by - label", async ({ page }) => {
+    await page.goto("/login");
+
+    await expect(page.getByLabel("Sign In")).toBeVisible();
   });
 });
