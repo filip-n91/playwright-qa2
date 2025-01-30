@@ -1,0 +1,22 @@
+{
+  "name": "playwright-qa2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filip-n91/playwright-qa2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/filip-n91/playwright-qa2/issues"
+  },
+  "homepage": "https://github.com/filip-n91/playwright-qa2#readme",
+  "description": "",
+  "devDependencies": {
+    "@playwright/test": "^1.50.0",
+    "@types/node": "^22.12.0"
+  }
+}
