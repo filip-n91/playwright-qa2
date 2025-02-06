@@ -15,4 +15,4 @@ const VALID_LOGIN_PAYLOAD = {
   PASSWORD: "test123",
 };
 
-export { generateUserCredentials };
+export { generateUserCredentials, VALID_LOGIN_PAYLOAD };

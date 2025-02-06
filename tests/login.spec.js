@@ -1,9 +1,7 @@
 import { test, expect } from "@playwright/test";
-import { HEADINGS, URLS, generateUserCredentials, utils } from "../fixtures";
+import { HEADINGS, URLS, utils, VALID_LOGIN_PAYLOAD } from "../fixtures";
 
 test.describe("login tests", () => {
-  const { username, email, password } = generateUserCredentials(5);
-
   test.beforeEach("visit the login page", async ({ page }) => {
     await page.goto(URLS["LOGIN"]);
   });
@@ -13,8 +11,10 @@ test.describe("login tests", () => {
     await heading.waitFor();
     await expect(heading).toHaveText(HEADINGS["LOGIN"]);
 
-    // fill in the form
-    utils.fillAndSubmitForm(page, "input", [email, password]);
+    utils.fillAndSubmitForm(page, "input", [
+      VALID_LOGIN_PAYLOAD["EMAIL"],
+      VALID_LOGIN_PAYLOAD["PASSWORD"],
+    ]);
 
     await page.waitForURL(URLS["DASHBOARD"]);
     await expect(page).toHaveURL(URLS["DASHBOARD"]);
