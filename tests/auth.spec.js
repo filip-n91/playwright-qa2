@@ -9,12 +9,14 @@ test.describe("register a user and log in", () => {
     // visit the register page
     await page.goto(URLS["REGISTER"]);
 
-    await expect(page.locator("h1")).toBeVisible();
-    await expect(page.locator("h1")).toHaveText(HEADINGS["REGISTER"]);
+    const heading = page.locator("h1");
+    await heading.waitFor();
+    await expect(heading).toHaveText(HEADINGS["REGISTER"]);
 
     // fill in the form
     utils.fillAndSubmitForm(page, "input", [username, email, password]);
 
+    await page.waitForURL(URLS["DASHBOARD"]);
     await expect(page).toHaveURL(URLS["DASHBOARD"]);
   });
 
@@ -22,12 +24,14 @@ test.describe("register a user and log in", () => {
     // visit the login page
     await page.goto(URLS["LOGIN"]);
 
-    await expect(page.locator("h1")).toBeVisible();
-    await expect(page.locator("h1")).toHaveText(HEADINGS["LOGIN"]);
+    const heading = page.locator("h1");
+    await heading.waitFor();
+    await expect(heading).toHaveText(HEADINGS["LOGIN"]);
 
     // fill in the form
     utils.fillAndSubmitForm(page, "input", [email, password]);
 
+    await page.waitForURL(URLS["DASHBOARD"]);
     await expect(page).toHaveURL(URLS["DASHBOARD"]);
   });
 });
