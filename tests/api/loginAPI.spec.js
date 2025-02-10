@@ -28,7 +28,7 @@ test.describe("login API tests", () => {
     expect(await response.error).toBe("Unauthorized");
   });
 
-  test("login via BE", async ({ page }) => {
+  test("login via BE", async ({}) => {
     const response = await loginAPI.login(
       VALID_LOGIN_PAYLOAD["EMAIL"],
       VALID_LOGIN_PAYLOAD["PASSWORD"]
