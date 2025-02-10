@@ -1,5 +1,5 @@
 import { test, expect } from "@playwright/test";
-import { HEADINGS, URLS, utils, VALID_LOGIN_PAYLOAD } from "../../fixtures";
+import { utils, VALID_LOGIN_PAYLOAD } from "../../fixtures";
 import { LoginAPI } from "../../pom/modules/api/loginAPI";
 
 test.describe("login API tests", () => {
