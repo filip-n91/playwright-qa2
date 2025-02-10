@@ -1,3 +1,5 @@
+import { expect } from "@playwright/test";
+
 export class LoginAPI {
   constructor(page) {
     this.page = page;
@@ -8,7 +10,8 @@ export class LoginAPI {
       data: { email: email, password: password },
       headers: { Accept: "application/json" },
     });
-
+    // Expecting status code from 200 to 299
+    // expect(await response).toBeOK()
     let responseJSON = await response.json();
 
     return responseJSON;
